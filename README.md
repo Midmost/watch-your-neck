@@ -2,6 +2,14 @@
 당신의 거북목을 잡아드립니다. 
 
 
+### Project Structure
+
+|App|Feature|
+|:-|:-|
+|app_turtle|tm 모델로 거북목 비율 측정|
+|app_account|로그인 기능 구현|
+
+
 ### dependencies
 본 프로젝트는 `pyenv` 가상환경을 사용합니다. pyenv를 사용하지 않을 경우 별도의 가상환경을 설치하시기 바랍니다.
 

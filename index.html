@@ -1,9 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'head.html' %}
+
+
+<link rel="manifest" href="../manifest.json">
+
+
+{% load pwa %}
+
+<!-- Icons for Apple Devices -->
+{% for icon in PWA_APP_ICONS %}
+<link rel="apple-touch-icon" href="{{ icon.src }}" sizes="{{ icon.sizes }}">
+{% endfor %}
+
+<meta name="theme-color" content="{{ PWA_APP_THEME_COLOR }}">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="{{ PWA_APP_NAME }}">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+<script type="text/javascript">
+    // Initialize the service worker
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/serviceworker.js', {
+            scope: '.' // <--- THIS BIT IS REQUIRED
+        }).then(function (registration) {
+            // Registration was successful
+            console.log('django-progressive-web-app: ServiceWorker registration successful with scope: ', registration.scope);
+        }, function (err) {
+            // registration failed :(
+            console.log('django-progressive-web-app: ServiceWorker registration failed: ', err);
+        });
+    }
+</script>
+
+{% load static %}
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <title>VENCLEFIT</title>
+
+</head>
+
+<div align="center">
+    <img src=" ../static/images/icon-160x160.png" width="300">
+    <h3>내가 꿈꾸는 내가 되는 시간: VENCLEFIT</h3>
+</div>
+
+
 <!-- https://teachablemachine.withgoogle.com/models/JHl8Na0eU/ -->
 
-<div>Teachable Machine Pose Model</div>
+<h1 align="center">Watch your neck</h1>
 
 <!-- 측정 시작: onclick 시 init() 실행   -->
-<button type="button" onclick="init()">Start</button>
+<!-- <button type="button" onclick="init()">Start</button> -->
 
 <div><canvas id="canvas"></canvas></div>
 <div id="label-container"></div>
@@ -15,7 +69,7 @@
     // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/pose
 
     // the link to your model provided by Teachable Machine export panel
-    const URL = "./my_model/";
+    const URL = "./project/app_turtle/my_model/";
     let model, webcam, ctx, labelContainer, maxPredictions;
 
     // 예측 시작
