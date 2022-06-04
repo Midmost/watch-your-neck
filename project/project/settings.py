@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # user app
     'app_turtle',
+    'app_account',
 ]
 
 MIDDLEWARE = [
