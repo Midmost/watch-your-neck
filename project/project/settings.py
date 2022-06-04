@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # custom
+    'pwa',
     # user app
     'app_turtle',
     'app_account',
@@ -130,6 +132,45 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [ os.path.join(BASE_DIR, 'static'), ]
+
+# PWA Settings
+# ref: https://pypi.org/project/django-pwa/
+# https://www.geeksforgeeks.org/make-pwa-of-a-django-project/
+
+# Build manifest.json
+PWA_APP_NAME = 'Venclefit' 
+PWA_APP_DESCRIPTION = "내가 원하는 나를 향한 여정: Venclefit" 
+PWA_APP_THEME_COLOR = '#0A0302' 
+PWA_APP_BACKGROUND_COLOR = '#ffffff' 
+PWA_APP_DISPLAY = 'standalone' 
+PWA_APP_SCOPE = '/' 
+PWA_APP_ORIENTATION = 'any' 
+PWA_APP_START_URL = '/' 
+PWA_APP_STATUS_BAR_COLOR = 'default' 
+PWA_APP_ICONS = [ 
+    { 
+        'src': '/static/images/icon-160x160.png', 
+        'sizes': '160x160' 
+    } 
+] 
+PWA_APP_ICONS_APPLE = [
+    {
+        'src': 'static/images/icon-160x160.png',
+        'sizes': '160x160'
+    }
+]
+PWA_APP_SPLASH_SCREEN = [ 
+    {
+        'src': '/static/images/icons/splash-640x1136.png', 
+        'media': '(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)' 
+    }
+] 
+PWA_APP_DIR = 'ltr' 
+PWA_APP_LANG = 'en-US'
+
+# PWA; Service Worker
+PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'static/js', 'serviceworker.js')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
