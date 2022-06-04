@@ -1,0 +1,36 @@
+# https://velog.io/@couchcoding/Github-Actions로-Heroku서버에-배포하기
+
+ame: deploy
+
+on:
+  pull_request:
+    types: [closed]
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged
+    
+    steps:
+      - name: checkout backend
+        uses: actions/checkout@v2
+      - name: checkout frontend
+        uses: actions/checkout@v2
+        with: 
+          repository: couch-coding/heroku-actions-front
+          path: ./frontend
+         
+      # build를 위하 dependency 설치, market place의 setup plugin install
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          
+      - name: build frontend to resources
+        run: sh build.sh
+      - name: deploy to heroku
+        uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "git-actions-sample" #Must be unique in Heroku
+          heroku_email: "couchcoding.help@gmail.com"
