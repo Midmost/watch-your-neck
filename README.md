@@ -4,19 +4,22 @@
 
 ### Project Structure
 
-|App|Feature|
-|:-|:-|
-|app_turtle|tm 모델로 거북목 비율 측정|
-|app_account|로그인 기능 구현|
-
+```
+├── LICENSE
+├── README.md
+├── background.js
+├── images
+│   ├── V.png
+│   └── V_orange.png
+├── index.html
+├── manifest.json
+├── popup.html
+└── requirements.txt
+```
 
 ### dependencies
-본 프로젝트는 `pyenv` 가상환경을 사용합니다. pyenv를 사용하지 않을 경우 별도의 가상환경을 설치하시기 바랍니다.
-
 ```bash
 python==3.7.13
-Django==3.2.13
-django-pwa==1.0.10
 pip==22.0.4
 ```
 
