@@ -3,7 +3,7 @@ name: 'Issue: 기능 요청'
 about: 추가를 원하는 기능 요청
 title: "[Feature] *원하는 기능명* 추가 요청"
 labels: enhancement
-assignees: '4923'
+assignees: ''
 
 ---
 

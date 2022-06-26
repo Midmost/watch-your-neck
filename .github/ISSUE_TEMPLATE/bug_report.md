@@ -3,7 +3,7 @@ name: Bug report
 about: 이슈 파악 및 보고 또는 기록
 title: "[Bug] 에러코드"
 labels: bug
-assignees: '4923'
+assignees: ''
 
 ---
 
